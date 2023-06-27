@@ -3,6 +3,7 @@ package com.example.agarimovil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -25,10 +26,15 @@ public class MainActivity extends AppCompatActivity {
         registro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                registro(view);
             }
         });
 
-
     }
+
+    public void registro(View view){
+        Intent intent = new Intent(this, RegistroActivity.class);
+        startActivity(intent);
+    }
+
 }
