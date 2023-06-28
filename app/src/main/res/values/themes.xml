@@ -6,5 +6,15 @@
 
         <item name="android:fontFamily">@font/nunito_bold</item>
     </style>
+
     <style name="Theme.AgariMovil" parent="Base.Theme.AgariMovil" />
+
+    <style name="Theme.AgariMovil.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.AgariMovil.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.AgariMovil.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
