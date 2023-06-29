@@ -208,21 +208,19 @@
                 android:textColor="@color/primero"
                 android:textSize="14sp" />
 
-            <EditText
-                android:id="@+id/edtEstado"
+            <Spinner
+                android:id="@+id/spnEstadosRegistro"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_height="48dp"
                 android:background="@color/quinto"
                 android:elevation="20dp"
-                android:ems="10"
-                android:fontFamily="@font/nunito_bold"
-                android:hint="Estado"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:paddingLeft="5dp"
-                android:textColor="#000000"
-                android:textStyle="bold" />
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.531"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.155" />
 
             <EditText
                 android:id="@+id/edtMunicipio"

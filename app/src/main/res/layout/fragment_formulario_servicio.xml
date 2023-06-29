@@ -8,23 +8,6 @@
     tools:context=".ui.FormularioServicioFragment">
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
-        android:text="Información adicional"
-        android:textAlignment="center"
-        android:textColor="@color/primero"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.48" />
-
-    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,26 +38,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.088" />
 
-    <EditText
-        android:id="@+id/edtEstado"
+    <Spinner
+        android:id="@+id/spnEstadosServicio"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:background="@color/quinto"
         android:elevation="20dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:hint="Estado"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.155" />
 
     <EditText
         android:id="@+id/edtMunicipio"
@@ -147,19 +122,36 @@
         android:elevation="20dp"
         android:ems="10"
         android:fontFamily="@font/nunito_bold"
+        android:gravity="start"
         android:hint="Descripción de su dirección"
+        android:inputType="text|textMultiLine"
         android:minHeight="48dp"
         android:paddingLeft="5dp"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:inputType="text|textMultiLine"
-        android:gravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.591" />
+        app:layout_constraintVertical_bias="0.599" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:text="Información adicional"
+        android:textAlignment="center"
+        android:textColor="@color/primero"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.487" />
 
     <EditText
         android:id="@+id/edtProblema"
@@ -185,7 +177,7 @@
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.836" />
+        app:layout_constraintVertical_bias="0.845" />
 
     <Button
         android:id="@+id/button"

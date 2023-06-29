@@ -5,19 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.agarimovil.clases.Estados;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class RegistroActivity extends AppCompatActivity{
+public class RegistroActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
 private DatePickerDialog datePickerDialog;
 private EditText nombre;
+private Spinner estadoDireccion;
 
 private Estados estados = new Estados();
 
@@ -27,8 +32,15 @@ private Estados estados = new Estados();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+        //EditText y botones
         nombre = findViewById(R.id.edtNombre);
 
+        //Otros elementos
+        estadoDireccion = findViewById(R.id.spnEstadosRegistro);
+        estadoDireccion.setOnItemSelectedListener(this);
+        estadoDireccion.setAdapter(new ArrayAdapter<String>(this, R.layout.adapter_estados,estados.getEstados()));
+
+        //Crear la vista del calendario
         fecha = findViewById(R.id.edtFechaNac);
         fecha.setFocusable(false);
         fecha.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +66,20 @@ private Estados estados = new Estados();
                 datePickerDialog.show();
             }
         });
+        //vista del calendario
 
     }
 
+
+    //Funciones del Spinner
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        //Acciones del spinner
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
 }
