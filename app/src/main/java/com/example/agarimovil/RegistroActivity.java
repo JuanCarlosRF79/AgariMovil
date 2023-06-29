@@ -9,18 +9,25 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.agarimovil.clases.Estados;
+
 import java.util.Calendar;
 import java.util.Date;
 
 public class RegistroActivity extends AppCompatActivity{
 
 private DatePickerDialog datePickerDialog;
+private EditText nombre;
+
+private Estados estados = new Estados();
 
     EditText fecha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
+
+        nombre = findViewById(R.id.edtNombre);
 
         fecha = findViewById(R.id.edtFechaNac);
         fecha.setFocusable(false);
