@@ -61,6 +61,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/segundo"
         android:fontFamily="@font/nunito_bold"
+        android:onClick="ingresar"
         android:text="Iniciar sesión"
         android:textColor="@color/quinto"
         android:textStyle="bold"
