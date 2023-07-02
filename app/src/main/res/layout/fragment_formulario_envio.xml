@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,12 +95,24 @@
                 android:paddingLeft="5dp"
                 android:textColor="#000000" />
 
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Detalles de compra"
+                android:textAlignment="center"
+                android:textColor="@color/primero"
+                android:textSize="18sp" />
+
             <ListView
+                android:id="@+id/lvDetalles"
                 android:layout_width="350dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:background="@color/quinto"
-                android:elevation="20dp" />
+                android:scrollbarSize="3dp"
+                android:nestedScrollingEnabled="true"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
