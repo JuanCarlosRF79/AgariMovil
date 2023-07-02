@@ -22,4 +22,14 @@
         android:name="com.example.agarimovil.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_carrito"
+        android:name="com.example.agarimovil.ui.FormularioEnvioFragment"
+        android:label="Solicitar un envío"
+        tools:layout="@layout/fragment_formulario_envio" />
+    <fragment
+        android:id="@+id/nav_servicio"
+        android:name="com.example.agarimovil.ui.FormularioServicioFragment"
+        android:label="Solicitar servicio"
+        tools:layout="@layout/fragment_formulario_servicio" />
 </navigation>
