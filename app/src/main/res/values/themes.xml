@@ -3,8 +3,14 @@
     <style name="Base.Theme.AgariMovil" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
+        <item name="colorPrimary">@color/primero</item>
+        <item name="colorPrimaryDark">@color/primero</item>
+        <item name="colorAccent">@color/white</item>
+        
         <item name="android:fontFamily">@font/nunito_bold</item>
+        
+        <item name="android:statusBarColor">@color/primero</item>
+        <item name="android:navigationBarColor">@color/primero</item>
     </style>
 
     <style name="Theme.AgariMovil" parent="Base.Theme.AgariMovil" />
@@ -14,7 +20,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.AgariMovil.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.AgariMovil.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
 
-    <style name="Theme.AgariMovil.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    </style>
+
+    <style name="Theme.AgariMovil.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
+
+    </style>
 </resources>
