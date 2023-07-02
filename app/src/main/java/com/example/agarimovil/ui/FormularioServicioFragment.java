@@ -18,7 +18,7 @@ import com.example.agarimovil.clases.Estados;
 public class FormularioServicioFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
 
     private View view;
-    private Estados estadosInfo;
+    private Estados estadosInfo = new Estados();
     private Spinner estados;
 
     public FormularioServicioFragment() {
@@ -34,6 +34,7 @@ public class FormularioServicioFragment extends Fragment  implements AdapterView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_formulario_servicio, container, false);
+
 
         estados = view.findViewById(R.id.spnEstadosServicio);
         estados.setOnItemSelectedListener(this);
