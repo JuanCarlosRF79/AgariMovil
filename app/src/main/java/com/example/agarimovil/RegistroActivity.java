@@ -3,6 +3,7 @@ package com.example.agarimovil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,11 +33,12 @@ private Estados estados = new Estados();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+
         //EditText y botones
         nombre = findViewById(R.id.edtNombre);
 
         //Otros elementos
-        estadoDireccion = findViewById(R.id.spnEstadosRegistro);
+        estadoDireccion = findViewById(R.id.spnEstados);
         estadoDireccion.setOnItemSelectedListener(this);
         estadoDireccion.setAdapter(new ArrayAdapter<String>(this, R.layout.adapter_estados,estados.getEstados()));
 
