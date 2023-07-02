@@ -209,7 +209,7 @@
                 android:textSize="14sp" />
 
             <Spinner
-                android:id="@+id/spnEstadosRegistro"
+                android:id="@+id/spnEstados"
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:background="@color/quinto"
