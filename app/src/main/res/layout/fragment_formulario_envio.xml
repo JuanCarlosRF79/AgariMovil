@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quinto"
+    tools:context=".ui.FormularioEnvioFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solicitar un envío"
+                android:textColor="@color/primero"
+                android:textSize="34sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp"
+                android:text="Confirme su dirección"
+                android:textAlignment="center"
+                android:textColor="@color/primero"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spnEstados"
+                android:layout_width="300dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/quinto"
+                android:elevation="20dp" />
+
+            <EditText
+                android:id="@+id/edtMunicipio"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/quinto"
+                android:elevation="20dp"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="Municipio"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/edtCalle"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/quinto"
+                android:elevation="20dp"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="Calle"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="#000000" />
+
+            <EditText
+                android:id="@+id/edtColonia"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/quinto"
+                android:elevation="20dp"
+                android:ems="10"
+                android:fontFamily="@font/nunito_bold"
+                android:hint="Colonia"
+                android:inputType="text|textPostalAddress"
+                android:minHeight="48dp"
+                android:paddingLeft="5dp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Detalles de compra"
+                android:textAlignment="center"
+                android:textColor="@color/primero"
+                android:textSize="18sp" />
+
+            <ListView
+                android:id="@+id/lvDetalles"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/quinto"
+                android:scrollbarSize="3dp"
+                android:nestedScrollingEnabled="true"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginLeft="30dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Total compra:"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="30dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:text="Costos de envío:"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/quinto"
+                    android:elevation="20dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center|left"
+                    android:minHeight="48dp"
+                    android:paddingLeft="5dp"
+                    android:text="Total $"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="30dp"
+                    android:background="@color/quinto"
+                    android:elevation="20dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center|left"
+                    android:minHeight="48dp"
+                    android:paddingLeft="5dp"
+                    android:text="Total $"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="7dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center"
+                    android:text="Total: "
+                    android:textColor="#000000"
+                    android:textSize="34sp" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="150dp"
+                    android:layout_height="48dp"
+                    android:background="@color/quinto"
+                    android:elevation="20dp"
+                    android:ems="10"
+                    android:fontFamily="@font/nunito_bold"
+                    android:gravity="center|left"
+                    android:minHeight="48dp"
+                    android:paddingLeft="5dp"
+                    android:text="Total $"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:backgroundTint="@color/primero"
+                    android:text="Cancelar"
+                    app:cornerRadius="0dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_marginRight="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/segundo"
+                    android:text="Solicitar"
+                    app:cornerRadius="0dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="-62dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
