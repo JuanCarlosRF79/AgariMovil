@@ -15,7 +15,11 @@ public class detalle_producto extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_producto);
+        // Asigna el TextView txtNumero utilizando su ID
+        txtNumero = findViewById(R.id.txtNumero);
     }
+
+
 
     public void restarProducto(View view) {
         if (cantidadSeleccionada > 0) {

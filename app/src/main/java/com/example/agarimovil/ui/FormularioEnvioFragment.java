@@ -18,6 +18,7 @@ import com.example.agarimovil.R;
 import com.example.agarimovil.RegistroActivity;
 import com.example.agarimovil.clases.CustomBaseAdapterEnvio;
 import com.example.agarimovil.clases.Estados;
+import com.example.agarimovil.detalle_producto;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,7 +112,7 @@ public class FormularioEnvioFragment extends Fragment implements AdapterView.OnI
     }
 
     public void mostrarDetalle(View view){
-        Intent intent = new Intent(view.getContext(), RegistroActivity.class);
+        Intent intent = new Intent(view.getContext(), detalle_producto.class);
         startActivity(intent);
     }
 
