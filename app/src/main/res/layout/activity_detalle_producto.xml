@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/quinto"
+    android:orientation="vertical"
+    android:padding="21dp">
+
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del producto"
+        android:textColor="@color/primero"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Descripción del producto"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Costo Individual: $5.00"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Marca"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtCondicion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Condición"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Stock: 0"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnQuitar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="restarProducto"
+            android:padding="2dp"
+            android:text="-"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/txtNumero"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/quinto"
+            android:backgroundTint="@color/quinto"
+            android:elevation="20dp"
+            android:text="1"
+            android:textSize="25sp"
+            android:textAlignment="center"/>
+
+
+        <Button
+            android:id="@+id/btnAgregar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="agregarProducto"
+            android:padding="2dp"
+            android:text="+"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnComprar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/segundo"
+        android:text="Comprar"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+</LinearLayout>
