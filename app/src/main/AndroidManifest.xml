@@ -13,6 +13,33 @@
         android:theme="@style/Theme.AgariMovil"
         tools:targetApi="31">
         <activity
+            android:name=".cliente.DetalleServicioActivity"
+            android:exported="false"
+            android:parentActivityName=".cliente.MisServiciosActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".cliente.MisServiciosActivity"
+            android:exported="false"
+            android:parentActivityName=".cliente.HomeClienteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".cliente.FormularioServicioActivity"
+            android:exported="false"
+            android:parentActivityName=".cliente.HomeClienteActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".cliente.HomeClienteActivity"
+            android:exported="false" />
+        <activity
             android:name=".detalle_producto"
             android:exported="false" />
         <activity
