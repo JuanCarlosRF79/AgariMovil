@@ -22,6 +22,7 @@ public class MenuActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuBinding binding;
+    private boolean administracion,secretario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,19 +31,22 @@ public class MenuActivity extends AppCompatActivity {
         binding = ActivityMenuBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        administracion = getIntent().getBooleanExtra("administracion",false);
+        secretario = getIntent().getBooleanExtra("secretario",false);
+
         setSupportActionBar(binding.appBarMenu.toolbar);
-        binding.appBarMenu.fab.setOnClickListener(new View.OnClickListener() {
+        /*binding.appBarMenu.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 envio(view);
             }
-        });
+        });*/
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,R.id.nav_carrito,
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_carrito,
                 R.id.nav_servicio)
                 .setOpenableLayout(drawer)
                 .build();
@@ -55,6 +59,7 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu, menu);
+
         return true;
     }
 
@@ -63,11 +68,6 @@ public class MenuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
-    }
-
-    public void envio(View view){
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu);
-        navController.navigate(R.id.nav_carrito);
     }
 
 }

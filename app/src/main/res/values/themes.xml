@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.AgariMovil" parent="Theme.Material3.DayNight">
+    <style name="Base.Theme.AgariMovil" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/primero</item>
@@ -12,8 +12,7 @@
         <item name="android:statusBarColor">@color/primero</item>
         <item name="android:navigationBarColor">@color/primero</item>
     </style>
-
-    <style name="Theme.AgariMovil" parent="Base.Theme.AgariMovil" />
+    <style name="Theme.AgariMovil" parent="Base.Theme.AgariMovil"/>
 
     <style name="Theme.AgariMovil.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -25,6 +24,8 @@
     </style>
 
     <style name="Theme.AgariMovil.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" >
-
+        <item name="colorPrimary">@color/primero</item>
+        <item name="colorPrimaryDark">@color/primero</item>
+        <item name="colorAccent">@color/white</item>
     </style>
 </resources>

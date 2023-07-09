@@ -3,11 +3,13 @@ package com.example.agarimovil;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.agarimovil.clases.Estados;
+import com.example.agarimovil.cliente.HomeClienteActivity;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +27,7 @@ public class RegistroActivity extends AppCompatActivity implements AdapterView.O
 private DatePickerDialog datePickerDialog;
 private EditText nombre;
 private Spinner estadoDireccion;
+private Button btnRegistro;
 
 private Estados estados = new Estados();
 
@@ -36,6 +40,7 @@ private Estados estados = new Estados();
 
         //EditText y botones
         nombre = findViewById(R.id.edtNombre);
+        btnRegistro = findViewById(R.id.btnRegistro);
 
         //Otros elementos
         estadoDireccion = findViewById(R.id.spnEstados);
@@ -70,6 +75,13 @@ private Estados estados = new Estados();
         });
         //vista del calendario
 
+        btnRegistro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                registrarse(view);
+            }
+        });
+
     }
 
 
@@ -84,4 +96,11 @@ private Estados estados = new Estados();
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
+    public void registrarse(View view){
+        Intent intent = new Intent(this, HomeClienteActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }
