@@ -14,13 +14,13 @@
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.agarimovil.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
+        android:label="Servicios"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.agarimovil.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
+        android:label="Productos"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
         android:id="@+id/nav_carrito"
