@@ -13,6 +13,7 @@
         android:paddingTop="5dp"
         android:paddingRight="15dp"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/txtServicioID"
             android:layout_width="match_parent"
@@ -23,11 +24,12 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/primero"
             />
+
         <LinearLayout
-            android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/txtFechaSoli"
                 android:layout_width="wrap_content"
@@ -36,6 +38,7 @@
                 android:text="Fecha de solicitud: "
                 android:textColor="@color/primero"
                 />
+
             <TextView
                 android:id="@+id/txtFechaFin"
                 android:layout_width="wrap_content"
@@ -44,13 +47,15 @@
                 android:text="Fecha de finalización: "
                 android:textColor="@color/primero"
                 />
+
             <TextView
-                android:id="@+id/txtEstadoServ"
+                android:id="@+id/txtCostoServ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="Costo del servicio: "
                 android:textColor="@color/primero" />
+
         </LinearLayout>
 
     </LinearLayout>

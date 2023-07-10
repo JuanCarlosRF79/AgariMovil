@@ -8,8 +8,7 @@
     android:orientation="vertical"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    tools:context=".cliente.DetalleServicioActivity">
-
+    tools:context=".DetalleServicioAdminActivity">
     <TextView
         android:id="@+id/textView19"
         android:layout_width="match_parent"
@@ -113,7 +112,7 @@
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
         <TextView
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Estado del servicio: "
             android:textColor="@color/primero"
@@ -121,9 +120,9 @@
             android:layout_weight="1"/>
         <TextView
             android:id="@+id/txtEstadoServ"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sin completar"
+            android:text="Solicitado"
             android:textAlignment="center"
             android:paddingRight="5dp"
             android:paddingLeft="5dp"
@@ -133,48 +132,81 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtTotal"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total: $300.00"
-        android:textColor="@color/primero"
-        android:layout_marginBottom="10dp"
-        android:textSize="20dp" />
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estado del servicio: "
+            android:textColor="@color/primero"
+            android:textSize="20dp"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/txtTotal"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="$300.00"
+            android:background="@color/quinto"
+            android:textColor="@color/primero"
+            android:textSize="20dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtFechaSoli"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha de solicitud: 01/07/2023"
+        android:text="Fecha de solicitud:"
         android:textColor="@color/primero"
         android:textSize="20dp"
         android:layout_marginBottom="10dp"/>
 
-    <TextView
-        android:id="@+id/txtFechaSiguiente"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="1dp"
-        android:text="Siguiente cita: 01/07/2023"
-        android:background="@color/segundo"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:layout_marginBottom="10dp"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:paddingLeft="1dp"
+            android:text="Siguiente cita:"
+            android:textColor="@color/primero"
+            android:textAlignment="textStart"
+            android:layout_marginRight="10dp"
+            android:textSize="20dp"
+            android:layout_weight="1"/>
+
+        <EditText
+            android:id="@+id/edtFechaSiguiente"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@color/segundo"
+            android:textColor="@color/white"
+            android:textColorHint="@color/primero"
+            android:paddingLeft="5dp"
+            android:hint="Selecciona una fecha"
+            android:inputType="date"
+            android:layout_weight="1"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/txtFechaFin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fecha de finalización: 01/07/2023"
+        android:text="Fecha de finalización:"
         android:textColor="@color/primero"
         android:textSize="20sp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="40dp"/>
 
     <LinearLayout
         android:id="@+id/layoutCancelar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="horizontal">
         <Button
             android:id="@+id/btnAccion"
@@ -184,7 +216,7 @@
             android:textColor="@color/white"
             android:backgroundTint="@color/primero"
             android:textSize="27dp"
-            android:text="Cancelar" />
+            android:text="Confirmar" />
     </LinearLayout>
 
 
