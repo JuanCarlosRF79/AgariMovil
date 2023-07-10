@@ -6,22 +6,17 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.agarimovil.R;
-import com.example.agarimovil.RegistroActivity;
 import com.example.agarimovil.clases.CustomBaseAdapterEnvio;
 import com.example.agarimovil.clases.Estados;
-import com.example.agarimovil.detalle_producto;
+import com.example.agarimovil.DetalleProductoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -115,7 +110,7 @@ public class FormularioEnvioFragment extends Fragment implements AdapterView.OnI
     }
 
     public void mostrarDetalle(View view){
-        Intent intent = new Intent(view.getContext(), detalle_producto.class);
+        Intent intent = new Intent(view.getContext(), DetalleProductoActivity.class);
         startActivity(intent);
     }
 
