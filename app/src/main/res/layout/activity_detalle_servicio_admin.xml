@@ -141,7 +141,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Estado del servicio: "
+            android:text="Total: "
             android:textColor="@color/primero"
             android:textSize="20dp"
             android:layout_weight="1"/>
