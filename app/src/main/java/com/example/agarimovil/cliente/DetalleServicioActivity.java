@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,7 @@ import java.util.Map;
 public class DetalleServicioActivity extends AppCompatActivity {
 
     private formatoFecha formatoFecha;
-    private String idServicio,ip,pagoServ;
+    private String idServicio,ip,pagoServ,estadoServ;
     private TextView txtCodigo,txtNombre, txtEstado,txtMunicipio,txtCalle,txtColonia,txtEstadoServ,
     txtFechaSol,txtFechaCita,txtFechaFin, txtTotal;
     private Button btnCancelar;
@@ -95,6 +96,8 @@ public class DetalleServicioActivity extends AppCompatActivity {
                         txtMunicipio.setText(txtMunicipio.getText()+respo.getJSONObject(0).getString("ciudad"));
                         txtCalle.setText(txtCalle.getText()+respo.getJSONObject(0).getString("calle"));
                         txtColonia.setText(txtColonia.getText()+respo.getJSONObject(0).getString("colonia"));
+
+                        estadoServ=respo.getJSONObject(0).getString("estadoServicio");
                         txtEstadoServ.setText(respo.getJSONObject(0).getString("estadoServicio"));
 
                         pagoServ=respo.getJSONObject(0).getString("pagoServicio");
@@ -163,6 +166,11 @@ public class DetalleServicioActivity extends AppCompatActivity {
         //Llenar con información los textos
         txtMensaje.setText("Cancelar servicio");
         txtDescripcion.setText("Para confirmar la acción, presiona "+btnAceptar.getText().toString());
+        if (estadoServ.equals("En proceso")){
+            txtDescripcion.setText(Html.fromHtml("Para cancelar un servicio en proceso ponte en contacto con nosotros:"+"<br>"+
+                    "<u>33 1335 3167</u>"));
+            btnAceptar.setVisibility(View.INVISIBLE);
+        }
 
         //Construir la vista
         builder.setView(dialogView);

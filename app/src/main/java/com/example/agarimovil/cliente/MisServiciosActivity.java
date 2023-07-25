@@ -95,7 +95,7 @@ public class MisServiciosActivity extends AppCompatActivity {
                     JSONArray respo = new JSONArray(response);
                     JSONObject object;
 
-                    if (respo.length()>1) {
+                    if (respo.length()>0) {
 
                         for (int i = 0; i < respo.length(); i++) {
                             object = new JSONObject(respo.getString(i));
