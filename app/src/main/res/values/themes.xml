@@ -3,9 +3,6 @@
     <style name="Base.Theme.AgariMovil" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimary">@color/primero</item>
-        <item name="colorPrimaryDark">@color/primero</item>
-        <item name="colorAccent">@color/white</item>
         
         <item name="android:fontFamily">@font/nunito_bold</item>
         
