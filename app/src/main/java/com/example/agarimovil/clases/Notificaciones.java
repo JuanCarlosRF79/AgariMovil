@@ -29,20 +29,27 @@ public class Notificaciones {
 
     private String titulo,subtitulo,extra;
 
-    public Notificaciones(View viewActual, Class viewNuevaSi, Class viewNuevaNo, String titulo, String subtitulo, String extra) {
+    public Notificaciones(View viewActual, String titulo, String subtitulo) {
         this.viewActual = viewActual;
-        this.viewNuevaSi = viewNuevaSi;
-        this.viewNuevaNo = viewNuevaNo;
         this.titulo = titulo;
         this.subtitulo = subtitulo;
-        this.extra = extra;
     }
 
-    public void enviarNotificacion() {
+    public void enviarNotificacion(Class viewNuevaSi, Class viewNuevaNo,String extra) {
+
+        this.viewNuevaSi = viewNuevaSi;
+        this.viewNuevaNo = viewNuevaNo;
+        this.extra = extra;
+
         setPendingIntentSi();
         setPendingIntentNo();
         crearCanalNotificacion();
         crearNotificacion();
+    }
+
+    public void enviarNotificacionVacia(){
+        crearNotificacionVacia();
+        crearCanalNotificacionVacia();
     }
 
     @SuppressLint("ResourceAsColor")
@@ -117,5 +124,51 @@ public class Notificaciones {
 
         stackBuilder.addNextIntent(intent);
         pendingIntentSi = stackBuilder.getPendingIntent(1, PendingIntent.FLAG_CANCEL_CURRENT);
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void crearNotificacionVacia() {
+        //Instancia para generar la notificación, especificando el contexto de la aplicación
+        //y el canal de comunicación
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(viewActual.getContext(), CHANNEL_ID);
+
+        //Caracteristicas a incluir en la notificación
+        builder.setSmallIcon(R.drawable.baseline_circle_notifications_24);
+        builder.setContentTitle(titulo);
+        builder.setContentText(subtitulo);
+        builder.setColor(R.color.segundo);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        builder.setVibrate(new long[]{1000, 1000, 1000, 1000});
+        builder.setDefaults(Notification.DEFAULT_SOUND);
+
+
+        //Instancia que gestiona la notificación con el dispositivo
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(viewActual.getContext());
+        if (ActivityCompat.checkSelfPermission(viewActual.getContext(), android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        notificationManagerCompat.notify(NOTIFICATION_ID, builder.build());
+    }
+
+    private void crearCanalNotificacionVacia() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            //Nombre del canal
+            CharSequence  name = "AGARI";
+
+            //Instancia para gestionar el canal y el servicio de la notificación
+            NotificationChannel notificationChannel = new NotificationChannel(CHANNEL_ID,name,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+
+            NotificationManager notificationManager = (NotificationManager) viewActual.getContext().getSystemService(NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
     }
 }
