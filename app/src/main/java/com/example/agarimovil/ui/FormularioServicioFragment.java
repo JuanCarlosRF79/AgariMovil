@@ -12,13 +12,13 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.agarimovil.R;
-import com.example.agarimovil.clases.Estados;
+import com.example.agarimovil.clases.Municipios;
 
 
 public class FormularioServicioFragment extends Fragment  implements AdapterView.OnItemSelectedListener {
 
     private View view;
-    private Estados estadosInfo = new Estados();
+    private Municipios municipiosInfo = new Municipios();
     private Spinner estados;
 
     public FormularioServicioFragment() {
@@ -36,9 +36,9 @@ public class FormularioServicioFragment extends Fragment  implements AdapterView
         view = inflater.inflate(R.layout.fragment_formulario_servicio, container, false);
 
 
-        estados = view.findViewById(R.id.spnEstadosServicio);
+        estados = view.findViewById(R.id.spnMunicipiosServicio);
         estados.setOnItemSelectedListener(this);
-        estados.setAdapter(new ArrayAdapter<String>(view.getContext(), R.layout.adapter_estados,estadosInfo.getEstados()));
+        estados.setAdapter(new ArrayAdapter<String>(view.getContext(), R.layout.adapter_estados, municipiosInfo.getMunicipios()));
 
 
 

@@ -67,14 +67,15 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent intent;
                 if(usuarioRegistrado()){
-                    SharedPreferences preferences = getSharedPreferences("agari.dat",MODE_PRIVATE);
-                    preferences.getString("tipoUsuario",tipoEmp);
+                    tipoEmp = preferences.getString("tipoUsuario",tipoEmp);
                     if (tipoEmp.equals("Empleado")){
                         intent = new Intent(MainActivity.this, MenuActivity.class);
-
+                        startActivity(intent);
+                        finish();
                     } else if (tipoEmp.equals("Cliente")) {
                         intent = new Intent(MainActivity.this, HomeClienteActivity.class);
-
+                        startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -113,15 +114,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void preferencias(String id,String tipo){
-        if (recordar.isChecked()) {
-            SharedPreferences preferences = getSharedPreferences("agari.dat", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("agari.dat", MODE_PRIVATE);
 
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("idUsuario", id);
-            editor.putString("tipoUsuario", tipo);
-            editor.putBoolean("recordar", true);
-            editor.apply();
-        }
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("idUsuario", id);
+        editor.putString("tipoUsuario", tipo);
+
+        if (recordar.isChecked()) editor.putBoolean("recordar", true);
+
+        editor.apply();
     }
 
     private void iniciarSesion(View view) {

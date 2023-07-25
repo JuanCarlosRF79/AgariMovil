@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.088" />
 
     <Spinner
-        android:id="@+id/spnEstadosServicio"
+        android:id="@+id/spnMunicipiosServicio"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@color/quinto"
@@ -182,7 +182,7 @@
         app:layout_constraintVertical_bias="0.845" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnCancelarServ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/primero"
@@ -196,7 +196,7 @@
         app:layout_constraintVertical_bias="0.976" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSolicitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/segundo"

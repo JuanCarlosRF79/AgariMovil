@@ -20,9 +20,10 @@
         android:text="En progreso" />
 
     <ListView
+        android:id="@+id/lvEnProceso"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp" />
 
     <TextView
         android:id="@+id/textView8"
@@ -35,6 +36,7 @@
         android:text="Completados"/>
 
     <ListView
+        android:id="@+id/lvCompletados"
         android:layout_width="match_parent"
         android:layout_height="270dp" />
 </LinearLayout>

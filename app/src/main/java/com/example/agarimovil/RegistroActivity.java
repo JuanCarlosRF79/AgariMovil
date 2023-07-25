@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,10 +12,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.agarimovil.clases.Estados;
+import com.example.agarimovil.clases.Municipios;
 import com.example.agarimovil.cliente.HomeClienteActivity;
 
 import java.util.Calendar;
@@ -29,7 +26,7 @@ private EditText nombre;
 private Spinner estadoDireccion;
 private Button btnRegistro;
 
-private Estados estados = new Estados();
+private Municipios municipios = new Municipios();
 
     EditText fecha;
     @Override
@@ -45,7 +42,7 @@ private Estados estados = new Estados();
         //Otros elementos
         estadoDireccion = findViewById(R.id.spnEstados);
         estadoDireccion.setOnItemSelectedListener(this);
-        estadoDireccion.setAdapter(new ArrayAdapter<String>(this, R.layout.adapter_estados,estados.getEstados()));
+        estadoDireccion.setAdapter(new ArrayAdapter<String>(this, R.layout.adapter_estados, municipios.getMunicipios()));
 
         //Crear la vista del calendario
         fecha = findViewById(R.id.edtFechaNac);

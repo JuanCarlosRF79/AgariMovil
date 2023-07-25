@@ -15,7 +15,7 @@ import android.widget.Spinner;
 
 import com.example.agarimovil.R;
 import com.example.agarimovil.clases.CustomBaseAdapterEnvio;
-import com.example.agarimovil.clases.Estados;
+import com.example.agarimovil.clases.Municipios;
 import com.example.agarimovil.DetalleProductoActivity;
 
 /**
@@ -68,7 +68,7 @@ public class FormularioEnvioFragment extends Fragment implements AdapterView.OnI
 
     private View view;
     private Spinner spnEstados;
-    private Estados estadosInfo = new Estados();
+    private Municipios municipiosInfo = new Municipios();
 
     private ListView lvDetalles;
 
@@ -83,7 +83,7 @@ public class FormularioEnvioFragment extends Fragment implements AdapterView.OnI
 
         spnEstados = view.findViewById(R.id.spnEstados);
         spnEstados.setOnItemSelectedListener(this);
-        spnEstados.setAdapter(new ArrayAdapter<String>(view.getContext(), R.layout.adapter_estados,estadosInfo.getEstados()));
+        spnEstados.setAdapter(new ArrayAdapter<String>(view.getContext(), R.layout.adapter_estados, municipiosInfo.getMunicipios()));
 
         CustomBaseAdapterEnvio customBaseAdapterEnvio = new CustomBaseAdapterEnvio(view.getContext(),nombreProd,cantidadProd,totalProd);
         lvDetalles = (ListView) view.findViewById(R.id.lvDetalles);

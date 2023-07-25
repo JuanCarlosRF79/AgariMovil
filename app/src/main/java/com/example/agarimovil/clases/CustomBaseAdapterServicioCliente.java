@@ -14,13 +14,23 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class CustomBaseAdapterServicioCliente extends BaseAdapter {
-    Context context;
-    JSONArray array;
-    LayoutInflater inflater;
+    private Context context;
+    private JSONArray array;
+    private LayoutInflater inflater;
+
+    public formatoFecha formatoFecha;
+
 
     public CustomBaseAdapterServicioCliente(Context context, JSONArray array) {
         this.context = context;
@@ -55,22 +65,26 @@ public class CustomBaseAdapterServicioCliente extends BaseAdapter {
         try {
             JSONObject object = new JSONObject(array.getString(i));
 
-            codigoServ.setText(codigoServ.getText()+object.getString("idServicio"));
-            fechaSoli.setText(fechaSoli.getText()+object.getString("fechaOrden"));
+            codigoServ.setText(codigoServ.getText()+" "+object.getString("idServicio"));
+
+            formatoFecha = new formatoFecha(object.getString("fechaOrden"));
+            fechaSoli.setText(fechaSoli.getText()+formatoFecha.obtenerFecha());
 
             if (object.getString("estadoServicio").equals("Completado")){
-                fechaFin.setText(fechaFin.getText()+object.getString("fechaFinalizado"));
-
+                formatoFecha = new formatoFecha(object.getString("fechaFinalizado"));
+                fechaFin.setText(fechaFin.getText()+formatoFecha.obtenerFecha());
             }else if (object.getString("estadoServicio").equals("En proceso")){
-                fechaFin.setText("Próxima cita: "+object.getString("fechaFinalizado"));
+                formatoFecha = new formatoFecha(object.getString("fechaFinalizado"));
+                fechaFin.setText("Próxima cita: "+formatoFecha.obtenerFecha());
 
             } else if (object.getString("estadoServicio").equals("Solicitado")) {
                 fechaFin.setText("Pronto nos pondremos en contacto");
 
             }
-            NumberFormat numberFormat = NumberFormat.getInstance(Locale.US);
+            String format = "%,.2f";
+            String costo = String.format(format,object.getDouble("pagoServicio"));
 
-            costoServ.setText(costoServ.getText()+"$"+numberFormat.format(object.getString("pagoServicio")));
+            costoServ.setText(costoServ.getText()+"$"+costo);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);

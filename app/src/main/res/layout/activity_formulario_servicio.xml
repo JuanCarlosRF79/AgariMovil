@@ -8,6 +8,40 @@
     tools:context=".cliente.FormularioServicioActivity">
 
     <TextView
+        android:background="@color/cuarto"
+        android:id="@+id/txtTotal2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Total: $300.00"
+        android:textAlignment="center"
+        android:textColor="@color/primero"
+        android:elevation="20dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito"
+        android:text="El pago de servicio se realiza en efectivo el día de la revisión"
+        android:textAlignment="center"
+        android:textColor="@color/primero"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.864" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,7 +73,7 @@
         app:layout_constraintVertical_bias="0.088" />
 
     <Spinner
-        android:id="@+id/spnEstadosServicio"
+        android:id="@+id/spnMunicipiosServicio"
         android:layout_width="300dp"
         android:layout_height="48dp"
         android:background="@color/quinto"
@@ -50,48 +84,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.155" />
-
-    <EditText
-        android:id="@+id/edtMunicipio"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/quinto"
-        android:elevation="20dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:hint="Municipio"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
-
-    <EditText
-        android:id="@+id/edtColonia"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/quinto"
-        android:elevation="20dp"
-        android:ems="10"
-        android:fontFamily="@font/nunito_bold"
-        android:hint="Colonia"
-        android:inputType="text|textPostalAddress"
-        android:minHeight="48dp"
-        android:paddingLeft="5dp"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
 
     <EditText
         android:id="@+id/edtCalle"
@@ -109,10 +101,31 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.326" />
+        app:layout_constraintVertical_bias="0.237" />
+
+    <EditText
+        android:id="@+id/edtColonia"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/quinto"
+        android:elevation="20dp"
+        android:ems="10"
+        android:fontFamily="@font/nunito_bold"
+        android:hint="Colonia"
+        android:inputType="text|textPostalAddress"
+        android:minHeight="48dp"
+        android:paddingLeft="5dp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.322" />
 
     <EditText
         android:id="@+id/edtDireccion"
@@ -132,32 +145,15 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.599" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/nunito"
-        android:text="Información adicional"
-        android:textAlignment="center"
-        android:textColor="@color/primero"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.499" />
 
     <EditText
         android:id="@+id/edtProblema"
         android:layout_width="300dp"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:background="@color/quinto"
         android:elevation="20dp"
         android:ems="10"
@@ -176,39 +172,58 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.845" />
+        app:layout_constraintVertical_bias="0.673" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/primero"
-        android:text="Cancelar"
-        app:cornerRadius="0dp"
-        android:textColor="@color/white"
+        android:fontFamily="@font/nunito"
+        android:text="Información adicional"
+        android:textAlignment="center"
+        android:textColor="@color/primero"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.398" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSolicitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/segundo"
-        android:textColor="@color/white"
+        android:onClick="solicitarServicio"
         android:text="Solicitar"
+        android:textColor="@color/white"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.831"
+        app:layout_constraintHorizontal_bias="0.834"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976" />
+        app:layout_constraintVertical_bias="0.959" />
+
+    <Button
+        android:id="@+id/btnCancelarServ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primero"
+        android:onClick="volverMenu"
+        android:text="Cancelar"
+        android:textColor="@color/white"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.959" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
