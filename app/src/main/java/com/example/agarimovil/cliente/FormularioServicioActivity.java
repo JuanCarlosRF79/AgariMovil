@@ -123,9 +123,10 @@ public class FormularioServicioActivity extends AppCompatActivity {
                     JSONArray respo = new JSONArray(response);
 
                     if (respo.length()>0) {
-                        notificacion = new Notificaciones(view,MisServiciosActivity.class, DetalleServicioActivity.class,
-                                "Servicio registrado","Mostrar servicios solicitados",respo.getJSONObject(0).getString("idServicio"));
-                        notificacion.enviarNotificacion();
+                        notificacion = new Notificaciones(view, "Servicio registrado",
+                                "Mostrar servicios solicitados");
+                        notificacion.enviarNotificacion(MisServiciosActivity.class,
+                                DetalleServicioActivity.class,respo.getJSONObject(0).getString("idServicio"));
 
                         Intent intent = new Intent(FormularioServicioActivity.this, DetalleServicioActivity.class);
                         intent.putExtra("idServicio",respo.getJSONObject(0).getString("idServicio"));

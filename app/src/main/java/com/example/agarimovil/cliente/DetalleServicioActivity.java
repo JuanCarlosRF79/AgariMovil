@@ -1,11 +1,19 @@
 package com.example.agarimovil.cliente;
 
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +29,7 @@ import com.example.agarimovil.clases.formatoFecha;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,9 +37,10 @@ import java.util.Map;
 public class DetalleServicioActivity extends AppCompatActivity {
 
     private formatoFecha formatoFecha;
-    private String idServicio,ip;
+    private String idServicio,ip,pagoServ;
     private TextView txtCodigo,txtNombre, txtEstado,txtMunicipio,txtCalle,txtColonia,txtEstadoServ,
     txtFechaSol,txtFechaCita,txtFechaFin, txtTotal;
+    private Button btnCancelar;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -54,6 +64,7 @@ public class DetalleServicioActivity extends AppCompatActivity {
         txtFechaSol = findViewById(R.id.txtFechaSoli);
         txtFechaCita = findViewById(R.id.txtFechaSiguiente);
         txtFechaFin = findViewById(R.id.txtFechaFin);
+        btnCancelar = findViewById(R.id.btnAccion);
 
         if (getIntent().hasExtra("extra")){
             idServicio=getIntent().getStringExtra("exra");
@@ -86,6 +97,7 @@ public class DetalleServicioActivity extends AppCompatActivity {
                         txtColonia.setText(txtColonia.getText()+respo.getJSONObject(0).getString("colonia"));
                         txtEstadoServ.setText(respo.getJSONObject(0).getString("estadoServicio"));
 
+                        pagoServ=respo.getJSONObject(0).getString("pagoServicio");
                         String format = "%,.2f";
                         String costo = String.format(format,respo.getJSONObject(0).getDouble("pagoServicio"));
                         txtTotal.setText(txtTotal.getText()+costo);
@@ -95,12 +107,14 @@ public class DetalleServicioActivity extends AppCompatActivity {
 
                         if (!respo.getJSONObject(0).getString("proximaCita").equals("null")) {
                             formatoFecha = new formatoFecha(respo.getJSONObject(0).getString("proximaCita"));
-                            txtFechaCita.setText(txtColonia.getText() + formatoFecha.obtenerFecha());
+                            txtFechaCita.setText(txtFechaCita.getText() + formatoFecha.obtenerFecha());
                         }else txtFechaCita.setVisibility(View.INVISIBLE);
 
                         if (!respo.getJSONObject(0).getString("fechaFinalizado").equals("null")) {
+                            txtFechaCita.setVisibility(View.INVISIBLE);
+                            btnCancelar.setVisibility(View.INVISIBLE);
                             formatoFecha = new formatoFecha(respo.getJSONObject(0).getString("fechaFinalizado"));
-                            txtFechaFin.setText(txtColonia.getText() + formatoFecha.obtenerFecha());
+                            txtFechaFin.setText(txtFechaFin.getText() + formatoFecha.obtenerFecha());
                         }else txtFechaFin.setVisibility(View.INVISIBLE);
 
                     }
@@ -129,6 +143,93 @@ public class DetalleServicioActivity extends AppCompatActivity {
         // Hacer una solicitud JSON
         queue.add(request);
     }
+
+    public void cancelarServ(View view){
+        //Crear AlertDialog en la vista
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetalleServicioActivity.this);
+
+        //Obtener el content
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //Llenar un objeto con la vista personalizada del Alert
+        View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.layout_alerta_cancelar, viewGroup, false);
+
+        //Obtener los elementos dentro de la lista personalizada
+        Button btnAceptar=dialogView.findViewById(R.id.btnAceptarAlert);
+        Button btnCancelar=dialogView.findViewById(R.id.btnCanelarAlert);
+        TextView txtMensaje=dialogView.findViewById(R.id.txtMensaje);
+        TextView txtDescripcion=dialogView.findViewById(R.id.txtDescripcion);
+
+        //Llenar con información los textos
+        txtMensaje.setText("Cancelar servicio");
+        txtDescripcion.setText("Para confirmar la acción, presiona "+btnAceptar.getText().toString());
+
+        //Construir la vista
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        //Agregar acciones a los botones
+        btnAceptar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelarServicio(v);
+            }
+        });
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+        
+        //Mostrar la vista
+        alertDialog.show();
+    }
+
+    public void cancelarServicio(View view){
+        String url = "http://"+ip+":3000/servicio/cancelar";
+
+        RequestQueue queue = Volley.newRequestQueue(DetalleServicioActivity.this);
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (!response.equals("Error al cancelar servicio")){
+                    Notificaciones notificaciones = new Notificaciones(view,"Servicio cancelado",
+                            "El servicio se ha cancelado exitosamente");
+                    notificaciones.enviarNotificacionVacia();
+                    Intent intent = new Intent(DetalleServicioActivity.this, HomeClienteActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(DetalleServicioActivity.this, response, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetalleServicioActivity.this, "Ha ocurrido un error = " + error, Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                // Crear un mapa para asignar los valores del post
+                if (txtEstadoServ.getText().toString().equals("Solicitado"))
+                    pagoServ="0.0";
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Asignar los valores con sus claves
+                params.put("idServicio", idServicio);
+                params.put("pagoServicio",pagoServ);
+
+                // Devolvemos los parametros
+                return params;
+            }
+        };
+        // Hacer una solicitud JSON
+        queue.add(request);
+    }
+
 
 
 

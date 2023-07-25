@@ -1,5 +1,6 @@
 package com.example.agarimovil.clases;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,6 +54,7 @@ public class CustomBaseAdapterServicioCliente extends BaseAdapter {
         return 0;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflater.inflate(R.layout.listview_servicio,null);
@@ -70,16 +72,16 @@ public class CustomBaseAdapterServicioCliente extends BaseAdapter {
             formatoFecha = new formatoFecha(object.getString("fechaOrden"));
             fechaSoli.setText(fechaSoli.getText()+formatoFecha.obtenerFecha());
 
-            if (object.getString("estadoServicio").equals("Completado")){
+            if (!object.getString("fechaFinalizado").equals("null")){
                 formatoFecha = new formatoFecha(object.getString("fechaFinalizado"));
                 fechaFin.setText(fechaFin.getText()+formatoFecha.obtenerFecha());
-            }else if (object.getString("estadoServicio").equals("En proceso")){
-                formatoFecha = new formatoFecha(object.getString("fechaFinalizado"));
+            }else if (!object.getString("proximaCita").equals("null")){
+                formatoFecha = new formatoFecha(object.getString("proximaCita"));
                 fechaFin.setText("Próxima cita: "+formatoFecha.obtenerFecha());
-
-            } else if (object.getString("estadoServicio").equals("Solicitado")) {
+                fechaFin.setBackgroundColor(R.color.tercero);
+                fechaFin.setPadding(5,2,5,2);
+            } else{
                 fechaFin.setText("Pronto nos pondremos en contacto");
-
             }
             String format = "%,.2f";
             String costo = String.format(format,object.getDouble("pagoServicio"));

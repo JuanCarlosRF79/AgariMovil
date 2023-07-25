@@ -66,6 +66,19 @@ public class MisServiciosActivity extends AppCompatActivity {
             }
         });
 
+        serviciosCompletados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    Intent intent = new Intent(MisServiciosActivity.this,DetalleServicioActivity.class);
+                    intent.putExtra("idServicio",completados.getJSONObject(i).getString("idServicio"));
+                    startActivity(intent);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
 
     }
 
