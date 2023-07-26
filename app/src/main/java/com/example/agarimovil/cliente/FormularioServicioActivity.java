@@ -131,6 +131,7 @@ public class FormularioServicioActivity extends AppCompatActivity {
                         Intent intent = new Intent(FormularioServicioActivity.this, DetalleServicioActivity.class);
                         intent.putExtra("idServicio",respo.getJSONObject(0).getString("idServicio"));
                         startActivity(intent);
+                        finish();
                     }else {
                         Toast.makeText(FormularioServicioActivity.this, "Ha ocurrido un error", Toast.LENGTH_SHORT).show();
 
