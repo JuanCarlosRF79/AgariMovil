@@ -66,6 +66,7 @@
                 android:textStyle="bold" />
 
             <RadioGroup
+                android:id="@+id/sexo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -212,7 +213,7 @@
                 android:textSize="14sp" />
 
             <Spinner
-                android:id="@+id/spnEstados"
+                android:id="@+id/spnMunicipio"
                 android:layout_width="300dp"
                 android:layout_height="48dp"
                 android:background="@color/quinto"
@@ -224,22 +225,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.155" />
-
-            <EditText
-                android:id="@+id/edtMunicipio"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@color/quinto"
-                android:elevation="20dp"
-                android:ems="10"
-                android:fontFamily="@font/nunito_bold"
-                android:hint="Municipio"
-                android:inputType="text"
-                android:minHeight="48dp"
-                android:paddingLeft="5dp"
-                android:textColor="#000000"
-                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/edtCalle"
