@@ -179,6 +179,7 @@ public class DetalleServicioActivity extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                alertDialog.dismiss();
                 cancelarServicio(v);
             }
         });
