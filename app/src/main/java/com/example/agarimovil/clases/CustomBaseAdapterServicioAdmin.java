@@ -81,7 +81,9 @@ public class CustomBaseAdapterServicioAdmin extends BaseAdapter {
             if (!object.getString("proximaCita").equals("null")){
                 formatoFecha = new formatoFecha(object.getString("proximaCita"));
                 txtFechaCita.setText(txtFechaCita.getText()+"\n"+formatoFecha.obtenerFecha());
-            }
+            }else txtFechaCita.setVisibility(View.INVISIBLE);
+
+            txtEstadoServ.setText(object.getString("estadoServicio"));
 
             String format = "%,.2f";
             String costo = String.format(format,object.getDouble("pagoServicio"));

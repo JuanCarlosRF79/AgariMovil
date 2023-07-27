@@ -37,7 +37,7 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
 
     private String idServicio,fechaSiguiente,ip,estadoServicio, localDate;
     private TextView codigo,nombre,telefono,estadoDir,ciudad,colonia,calle,descripcionDir,
-            descripcionProblema,fechaSoli,fechaFin,estadoServ;
+            descripcionProblema,fechaSoli,fechaFin,estadoServ,btnCancelar;
     private EditText total,fechaCita;
     private DatePickerDialog datePickerDialog;
     private LinearLayout layoutCita;
@@ -64,6 +64,7 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
         telefono = findViewById(R.id.txtTelefonoCli);
         fechaCita = findViewById(R.id.edtFechaSiguiente);
         btnConfirmar = findViewById(R.id.btnAccion);
+        btnCancelar = findViewById(R.id.btnCancelar);
         layoutCita = findViewById(R.id.lyCambiarFecha);
 
         SharedPreferences preferences = getSharedPreferences("agari.dat",MODE_PRIVATE);
@@ -156,6 +157,7 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
 
                         if (!respo.getJSONObject(0).getString("fechaFinalizado").equals("null")) {
                             btnConfirmar.setVisibility(View.INVISIBLE);
+                            btnCancelar.setVisibility(View.INVISIBLE);
                             layoutCita.setVisibility(View.INVISIBLE);
                             total.setFocusable(false);
                             total.setClickable(false);
