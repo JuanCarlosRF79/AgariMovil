@@ -83,7 +83,6 @@ public class DetalleServicioActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
-                    int posicion = 0;
                     JSONArray respo = new JSONArray(response);
 
                     if (respo.length()>0) {
