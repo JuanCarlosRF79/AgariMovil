@@ -236,14 +236,27 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnAccion"
+            android:id="@+id/btnCancelar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="@color/white"
             android:backgroundTint="@color/primero"
-            android:textSize="27dp"
-            android:text="Confirmar" />
+            android:onClick="cancelar"
+            android:text="Cancelar"
+            android:textColor="@color/white"
+            android:textSize="27dp" />
+
+        <Button
+            android:id="@+id/btnAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/segundo"
+            android:onClick="confirmar"
+            android:text="Confirmar"
+            android:textColor="@color/white"
+            android:textSize="27dp" />
 
     </LinearLayout>
 

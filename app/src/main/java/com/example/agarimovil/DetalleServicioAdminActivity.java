@@ -1,11 +1,16 @@
 package com.example.agarimovil;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,13 +24,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.agarimovil.clases.Notificaciones;
 import com.example.agarimovil.clases.formatoFecha;
-import com.example.agarimovil.cliente.DetalleServicioActivity;
-
 import org.json.JSONArray;
 import org.json.JSONException;
-
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,7 +35,7 @@ import java.util.Map;
 
 public class DetalleServicioAdminActivity extends AppCompatActivity {
 
-    private String idServicio,fechaSiguiente,ip,estadoServicio;
+    private String idServicio,fechaSiguiente,ip,estadoServicio, localDate;
     private TextView codigo,nombre,telefono,estadoDir,ciudad,colonia,calle,descripcionDir,
             descripcionProblema,fechaSoli,fechaFin,estadoServ;
     private EditText total,fechaCita;
@@ -81,7 +83,6 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int month, int day) {
-                                String localDate;
                                 if (month+1<10){
                                     localDate = year+"-0"+(month+1)+"-"+day+"T";
                                 }else {
@@ -190,6 +191,160 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
         queue.add(request);
     }
 
+    public void cancelar(View view){
+        alertaConfirmacion(view,"Cancelar servicio",
+                "Antes de cancelar, asegurate de haber contactado con el cliente y confirmar la cancelación del servicio",
+                false);
+    }
 
+    public void confirmar(View view){
+        alertaConfirmacion(view,"Agendar cita",
+        "Antes de confirmar, asegurate de haber contactado al cliente y confirmar el día de la cita",
+                true);
+    }
+
+    public void alertaConfirmacion(View view,String titulo,String mensaje,boolean tipo){
+        //Crear AlertDialog en la vista
+        AlertDialog.Builder builder = new AlertDialog.Builder(DetalleServicioAdminActivity.this);
+
+        //Obtener el content
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+
+        //Llenar un objeto con la vista personalizada del Alert
+        View dialogView = LayoutInflater.from(view.getContext()).inflate(R.layout.layout_alerta_cancelar, viewGroup, false);
+
+        //Obtener los elementos dentro de la lista personalizada
+        Button btnAceptar=dialogView.findViewById(R.id.btnAceptarAlert);
+        Button btnCancelar=dialogView.findViewById(R.id.btnCanelarAlert);
+        TextView txtMensaje=dialogView.findViewById(R.id.txtMensaje);
+        TextView txtDescripcion=dialogView.findViewById(R.id.txtDescripcion);
+
+        //Llenar con información los textos
+        txtMensaje.setText(titulo);
+        txtDescripcion.setText(mensaje);
+
+        //Construir la vista
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        //Agregar acciones a los botones
+        if (tipo) {
+            btnAceptar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    confirmarServicio(v);
+                }
+            });
+        }else {
+            btnAceptar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    alertDialog.dismiss();
+                    cancelarServicio(v);
+                }
+            });
+        }
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
+        //Mostrar la vista
+        alertDialog.show();
+    }
+
+    public void confirmarServicio(View view){
+        String url = "http://"+ip+":3000/servicio/confirmar";
+
+        RequestQueue queue = Volley.newRequestQueue(DetalleServicioAdminActivity.this);
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (!response.equals("Error al agendar cita")){
+                    Notificaciones notificaciones = new Notificaciones(view,"Cita agendada",
+                            "Servicio agendado para el día "+fechaCita.getText().toString());
+                    notificaciones.enviarNotificacionVacia();
+                    Intent intent = new Intent(DetalleServicioAdminActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(DetalleServicioAdminActivity.this, response, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetalleServicioAdminActivity.this, "Ha ocurrido un error = " + error, Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                // Crear un mapa para asignar los valores del post
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Asignar los valores con sus claves
+                params.put("idServicio", idServicio);
+                params.put("pagoServicio",total.getText().toString());
+                params.put("proximaCita",fechaSiguiente);
+
+                // Devolvemos los parametros
+                return params;
+            }
+        };
+        // Hacer una solicitud JSON
+        queue.add(request);
+    }
+
+    public void cancelarServicio(View view){
+        String url = "http://"+ip+":3000/servicio/cancelar";
+
+        RequestQueue queue = Volley.newRequestQueue(DetalleServicioAdminActivity.this);
+
+        StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                if (!response.equals("Error al cancelar servicio")){
+                    Notificaciones notificaciones = new Notificaciones(view,"Servicio cancelado",
+                            "El servicio se ha cancelado exitosamente");
+                    notificaciones.enviarNotificacionVacia();
+                    Intent intent = new Intent(DetalleServicioAdminActivity.this, MenuActivity.class);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(DetalleServicioAdminActivity.this, response, Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(DetalleServicioAdminActivity.this, "Ha ocurrido un error = " + error, Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                // Crear un mapa para asignar los valores del post
+                String pagoServ=total.getText().toString();
+                if (estadoServ.getText().toString().equals("Solicitado")){
+                    pagoServ="0.0";
+                }
+
+                Map<String, String> params = new HashMap<String, String>();
+
+                // Asignar los valores con sus claves
+                params.put("idServicio", idServicio);
+                params.put("pagoServicio",pagoServ);
+
+                // Devolvemos los parametros
+                return params;
+            }
+        };
+        // Hacer una solicitud JSON
+        queue.add(request);
+    }
 
 }

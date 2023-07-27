@@ -37,7 +37,7 @@
                 android:layout_marginBottom="6dp"
                 android:background="@color/primero"
                 android:textSize="20sp"
-                android:text="Cancelar"
+                android:text="Volver"
                 android:layout_weight="1"
                 android:textColor="#FFF" />
             <View
