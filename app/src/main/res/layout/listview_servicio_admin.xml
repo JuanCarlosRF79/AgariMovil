@@ -17,15 +17,14 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="5">
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/txtCodigoServ"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Código de servicio: "
-                android:textColor="@color/primero"
-                />
+                android:text="Código de servicio #"
+                android:textColor="@color/primero" />
 
             <View
                 android:layout_width="match_parent"
@@ -58,47 +57,55 @@
                 android:background="@color/segundo"
                 android:layout_marginBottom="5dp"/>
 
+            <TextView
+                android:id="@+id/txtMunicipio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="Municipio: "
+                android:textColor="@color/primero" />
+
             <EditText
                 android:id="@+id/edtCalle"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/white"
                 android:clickable="false"
                 android:focusable="false"
                 android:inputType="textMultiLine"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:text="Calle"
                 android:nestedScrollingEnabled="true"
+                android:text="Calle:"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edtColonia"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:background="@color/white"
                 android:clickable="false"
                 android:focusable="false"
                 android:inputType="textMultiLine"
-                android:layout_marginRight="10dp"
                 android:minWidth="48dp"
-                android:text="Colonia"
-                android:layout_marginBottom="5dp"
                 android:nestedScrollingEnabled="true"
+                android:text="Colonia:"
                 android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/edtProblema"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
+                android:layout_marginRight="10dp"
                 android:background="@color/white"
                 android:clickable="false"
                 android:focusable="false"
                 android:inputType="textMultiLine"
-                android:layout_marginRight="10dp"
                 android:minWidth="48dp"
                 android:nestedScrollingEnabled="true"
-                android:text="Descripción del problema"
+                android:text="Descripción del problema:"
                 android:textSize="14sp" />
 
         </LinearLayout>
@@ -106,7 +113,18 @@
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_weight="1">
+            <TextView
+                android:id="@+id/txtPagoServ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:text="$ "
+                android:background="@color/segundo"
+                android:textColor="@color/white" />
+
             <TextView
                 android:id="@+id/txtEstadoServ"
                 android:layout_width="match_parent"
@@ -116,6 +134,34 @@
                 android:background="@color/segundo"
                 android:padding="10dp"
                 android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/txtFechaFin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"
+                android:text="Fecha finalizado"
+                android:textColor="@color/primero" />
+
+            <TextView
+                android:id="@+id/txtFechaCita"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:text="Próxima cita"
+                android:textColor="@color/primero" />
+
+            <TextView
+                android:id="@+id/txtFechaOrden"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:text="Fecha solicitud"
+                android:textColor="@color/primero" />
+
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
