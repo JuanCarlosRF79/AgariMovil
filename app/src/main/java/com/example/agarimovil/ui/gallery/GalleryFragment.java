@@ -182,12 +182,19 @@ public class GalleryFragment extends Fragment {
                     lvServicios.setVisibility(View.VISIBLE);
                     try {
                         JSONArray respo = new JSONArray(response);
-                        JSONObject object;
+                        servicios= new JSONArray();
 
                         if (respo.length() > 0) {
                             mensajeVacio.setVisibility(View.INVISIBLE);
                             CustomBaseAdapterServicioAdmin adapter;
-                            servicios = respo;
+                            //Limitar el número de servicios que se muestra
+                            //Para tener un buen rendimiento
+                            int i=0;
+                            do {
+                                servicios.put(respo.getJSONObject(i));
+                                i++;
+                            }while (i<respo.length() && i<11);
+
                             if (servicios.length() > 0) {
                                 adapter = new CustomBaseAdapterServicioAdmin(view.getContext(), servicios);
                                 lvServicios.setAdapter(adapter);

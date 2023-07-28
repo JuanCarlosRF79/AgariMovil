@@ -37,22 +37,36 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/txtFechaSoli"
+                    android:id="@+id/txtCondicion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Condición: "
-                    android:textColor="@color/primero"
-                    />
+                    android:textColor="@color/primero" />
 
                 <TextView
-                    android:id="@+id/txtFechaFin"
+                    android:id="@+id/txtMarca"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
                     android:text="Marca: "
-                    android:textColor="@color/primero"
-                    />
+                    android:textColor="@color/primero" />
+
+                <TextView
+                    android:id="@+id/txtStock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Stock: "
+                    android:textColor="@color/primero" />
+
+                <TextView
+                    android:id="@+id/txtCosto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Costo: "
+                    android:textColor="@color/primero" />
 
             </LinearLayout>
             <LinearLayout
@@ -62,7 +76,7 @@
                 android:layout_weight="1">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imgProd"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:layout_weight="1"
