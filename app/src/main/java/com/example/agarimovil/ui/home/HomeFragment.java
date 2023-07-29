@@ -93,24 +93,28 @@ public class HomeFragment extends Fragment {
         StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try {
-                    JSONArray respo = new JSONArray(response);
-                    JSONObject object;
+                if (!response.equals("No hay servicios registrados")) {
+                    try {
+                        JSONArray respo = new JSONArray(response);
+                        JSONObject object;
 
-                    if (respo.length()>0) {
-                        txtCantidad.setText(txtCantidad.getText()+""+respo.length());
-                        layout.setVisibility(View.INVISIBLE);
-                        servicios=respo;
-                        CustomBaseAdapterServicioAdmin adapter;
-                        if (servicios.length()>0){
-                            adapter = new CustomBaseAdapterServicioAdmin(view.getContext(),servicios);
-                            lvServicios.setAdapter(adapter);
+                        if (respo.length() > 0) {
+                            txtCantidad.setText(txtCantidad.getText() + "" + respo.length());
+                            layout.setVisibility(View.INVISIBLE);
+                            servicios = respo;
+                            CustomBaseAdapterServicioAdmin adapter;
+                            if (servicios.length() > 0) {
+                                adapter = new CustomBaseAdapterServicioAdmin(view.getContext(), servicios);
+                                lvServicios.setAdapter(adapter);
+                            }
+
                         }
 
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
                     }
-
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
+                }else {
+                    layout.setVisibility(View.VISIBLE);
                 }
             }
         }, new Response.ErrorListener() {

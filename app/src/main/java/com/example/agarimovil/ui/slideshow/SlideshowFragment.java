@@ -1,5 +1,6 @@
 package com.example.agarimovil.ui.slideshow;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -25,10 +26,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.agarimovil.DetalleProductoActivity;
 import com.example.agarimovil.R;
 import com.example.agarimovil.clases.CustomBaseAdapterProducto;
-import com.example.agarimovil.clases.CustomBaseAdapterServicioAdmin;
-import com.example.agarimovil.databinding.FragmentSlideshowBinding;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,6 +89,20 @@ public class SlideshowFragment extends Fragment {
         });
 
         lvProductos = view.findViewById(R.id.lvProductos);
+        lvProductos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                try {
+                    Intent intent = new Intent(view.getContext(), DetalleProductoActivity.class);
+                    intent.putExtra("idProducto",productos.getJSONObject(i).getString("idProducto"));
+                    startActivity(intent);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        });
+
         nombreProd = view.findViewById(R.id.autoCompleteTextView);
 
         btnLimpiar = view.findViewById(R.id.btnLimpiar);
@@ -114,6 +128,12 @@ public class SlideshowFragment extends Fragment {
         consultarProductos();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        consultarProductos();
+        super.onResume();
     }
 
     @Override

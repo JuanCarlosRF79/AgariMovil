@@ -151,6 +151,8 @@ public class DetalleServicioAdminActivity extends AppCompatActivity {
                         fechaSoli.setText(fechaSoli.getText()+formatoFecha.obtenerFecha());
 
                         if (!respo.getJSONObject(0).getString("proximaCita").equals("null")) {
+                            String arregloFecha[] = respo.getJSONObject(0).getString("proximaCita").split("T");
+                            fechaSiguiente=arregloFecha[0];
                             formatoFecha = new formatoFecha(respo.getJSONObject(0).getString("proximaCita"));
                             fechaCita.setText(fechaCita.getText() + formatoFecha.obtenerFecha());
                         }

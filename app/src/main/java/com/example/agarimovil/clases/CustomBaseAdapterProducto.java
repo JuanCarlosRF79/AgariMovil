@@ -1,6 +1,8 @@
 package com.example.agarimovil.clases;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import com.example.agarimovil.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Base64;
 
 public class CustomBaseAdapterProducto extends BaseAdapter {
 
@@ -66,7 +70,9 @@ public class CustomBaseAdapterProducto extends BaseAdapter {
             String costo = String.format(format,object.getDouble("costoIndividual"));
             txtCosto.setText(txtCosto.getText()+costo);
 
-            /*imgProd.setImageResource(0);*/
+            byte[] bytes = Base64.getDecoder().decode(object.getString("img"));
+            Bitmap img = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+            imgProd.setImageBitmap(img);
 
         } catch (JSONException e) {
             throw new RuntimeException(e);
